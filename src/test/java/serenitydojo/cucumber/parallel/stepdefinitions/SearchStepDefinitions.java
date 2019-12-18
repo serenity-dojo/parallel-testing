@@ -7,7 +7,6 @@ import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.util.EnvironmentVariables;
 import serenitydojo.cucumber.parallel.search.ArtifactDetails;
 import serenitydojo.cucumber.parallel.search.SearchFor;
-import serenitydojo.cucumber.parallel.search.SearchHomepageFor;
 import serenitydojo.cucumber.parallel.search.SearchResult;
 import serenitydojo.cucumber.parallel.navigation.NavigateTo;
 
@@ -19,9 +18,6 @@ public class SearchStepDefinitions {
 
     @Steps
     NavigateTo navigateTo;
-
-    @Steps
-    SearchHomepageFor searchHomepageFor;
 
     @Steps
     SearchFor searchFor;
@@ -42,12 +38,12 @@ public class SearchStepDefinitions {
     @Given("^(?:.*) has searched for \"(.*)\"")
     public void has_searched_for(String term) {
         navigateTo.theMavenSearchPage();
-        searchHomepageFor.term(term);
+        searchFor.term(term);
     }
 
     @When("^s?he searches for \"(.*)\"")
     public void search_for(String term) {
-        searchHomepageFor.term(term);
+        searchFor.term(term);
     }
 
     @When("^s?he selects the version number")
@@ -58,11 +54,6 @@ public class SearchStepDefinitions {
     @When("^s?he selects the group id")
     public void selects_the_group_id() {
         searchResult.selectGroupId();
-    }
-
-    @When("^s?he searches again for \"(.*)\"")
-    public void i_search_again_for(String term) {
-       searchFor.term(term);
     }
 
     @Then("the following artifacts should be proposed:")

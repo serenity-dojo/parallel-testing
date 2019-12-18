@@ -134,6 +134,8 @@
                     <includes>
                         <include>**/*TestSuite.*</include>
                     </includes>
+                    <parallel>methods</parallel>
+                    <threadCount>4</threadCount>
                 </configuration>
                 <executions>
                     <execution>
